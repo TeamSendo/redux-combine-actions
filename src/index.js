@@ -26,12 +26,13 @@ export default function reduxCombineActions() {
         return promise.then(
             payload => next({
                 payload,
-                type: FULFILLED
+                type: FULFILLED,
+                meta: { status: 'success' }
             }),
             error => next({
                 payload: error,
-                error: true,
-                type: REJECTED
+                type: REJECTED,
+                meta: { status: 'error' }
             })
         );
     };
